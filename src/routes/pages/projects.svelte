@@ -108,6 +108,7 @@
 	.projectimg {
 		width: 30%;
 		border-radius: 10px;
+		height: auto;
 	}
 	.projectdetails {
 		display: flex;

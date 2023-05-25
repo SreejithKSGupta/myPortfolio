@@ -3,7 +3,7 @@
 		['tel:+917025692254', 'Phone', 'https://phone.com', '#000044'],
 		['https://wa.me/7025692254', 'Whatsapp', 'https://whatsapp.com', 'green'],
 		['https://t.me/7025692254', 'Telegram', 'https://telegram.com', 'blue'],
-		['https://mail.to/sreejithksgupta2255@gmail.com', 'Email', 'https://mail.google.com', 'red']
+		['https://mail.to/sreejithksgupta2255@gmail.com', 'Email', 'https://mail.google.com', '#690101']
 	];
 	function getFavicon(websiteUrl: String): string {
 		let faviconurl = 'https://www.google.com/s2/favicons?sz=256&domain=' + websiteUrl + '&size=150';

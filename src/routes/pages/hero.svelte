@@ -130,7 +130,7 @@
 	}
 	.mainimg {
 		width: 25vw;
-		height: 25vw;
+		height: auto;
 		border-radius: 50%;
 	}
 	.skillslist :hover {
