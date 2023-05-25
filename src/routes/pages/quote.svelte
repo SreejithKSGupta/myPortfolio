@@ -9,11 +9,11 @@
 
 <div class="QuoteBox">
 	<div class="Quoteitem">
-		<h2>
+		<div class="h2">
 			{quote1}<span style="color:#ffffff">{quote2}</span>{quote3}
 			<span style="color:#ffffff"> {quote4}</span>
-		</h2>
-		<h3>&mdash;{quoter}<br /><em>{quoterinfo}</em></h3>
+		</div>
+		<div class="h3">&mdash;{quoter}<br /><em>{quoterinfo}</em></div>
 	</div>
 </div>
 
@@ -31,7 +31,7 @@
 		align-self: center;
 	}
 
-	.Quoteitem h2 {
+	.Quoteitem .h2 {
 		font-family: 'Abril Fatface', cursive;
 		position: relative;
 		color: #449e97;
@@ -45,7 +45,7 @@
 		padding: 25px;
 	}
 
-	.Quoteitem h3 {
+	.Quoteitem .h3 {
 		color: #ffffff;
 		font-size: 1.5rem;
 		font-weight: 400;
@@ -60,10 +60,10 @@
 			width: 80%;
 		}
 
-		.Quoteitem h2 {
+		.Quoteitem .h2 {
 			font-size: 1.5rem;
 		}
-		.Quoteitem h3 {
+		.Quoteitem .h3 {
 			font-size: 1rem;
 		}
 	}
