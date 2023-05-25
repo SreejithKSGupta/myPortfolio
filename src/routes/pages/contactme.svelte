@@ -12,7 +12,7 @@
 </script>
 
 <div id="contactme">
-	<h3>Contact me</h3>
+	<div class='h3'>Contact me</div>
 	{#each contactlist as contactitem}
 		<div class="contactitem" style="background-color: {contactitem[3]};">
 			<a href={contactitem[0]}
@@ -39,7 +39,7 @@
 		justify-content: space-evenly;
 		align-items: center;
 	}
-	#contactme h3 {
+	#contactme .h3 {
 		color: aliceblue;
 		text-align: center;
 		font-size: 160%;
