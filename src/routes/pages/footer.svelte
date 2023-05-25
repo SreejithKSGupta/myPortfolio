@@ -20,7 +20,7 @@
 
 <div class="footer">
 	<div class="footer_col">
-		<h3>Quick Links</h3>
+		<div class='h3'>Quick Links</div>
 		{#each sociallist as url}
 			<div class="footerlinkitem">
 				<a href={url[0]}>
@@ -31,7 +31,7 @@
 		{/each}
 	</div>
 	<div class="footer_col">
-		<h3>Contact me</h3>
+		<div class='h3'>Contact me</div>
 		{#each contactlist as contactitem}
 			<div class="footerlinkitem">
 				<a href={contactitem[0]}>
@@ -45,7 +45,7 @@
 </div>
 
 <style>
-	h3 {
+	.h3 {
 		color: #00ffdd;
 	}
 	.footer {
