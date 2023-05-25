@@ -57,7 +57,7 @@
 		<div class="projectitem">
 			<img class="projectimg" src={project[2]} alt={project[0]} />
 			<div class="projectdetails">
-				<h4>{project[0]}</h4>
+				<div class='h4'>{project[0]}</div>
 				<p>{project[1]}</p>
 				<ul>
 					{#each project[5] as features}
@@ -118,7 +118,7 @@
 		width: 50%;
 		height: 80%;
 	}
-	.projectdetails h4 {
+	.projectdetails .h4 {
 		font-size: 1.5rem;
 		text-align: center;
 		color: lightseagreen;
