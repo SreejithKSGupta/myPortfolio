@@ -1,25 +1,24 @@
 <script lang="ts">
 	import logo from '../res/sreejith.webp';
-    let screenSize=0;
+	let screenSize = 0;
 	let navlist = [
 		['#herocontainer', 'Home'],
 		['#projects', 'Projects'],
-		['#aboutme', 'About Me'],
-		['#contactme', 'Contact Me'],
+		['#aboutme', 'About'],
+		['#contactme', 'Contact'],
 		['#game', 'Game']
 	];
 	let appname = 'My Portfolio';
-    let menushow = 'none';
-    function togglemenu(){
-        if(menushow == 'none'){
-            menushow = 'flex';
-        }
-        else{
-            menushow = 'none';
-        }
-        
-    }
+	let menushow = 'none';
+	function togglemenu() {
+		if (menushow == 'none') {
+			menushow = 'flex';
+		} else {
+			menushow = 'none';
+		}
+	}
 </script>
+
 <svelte:window bind:innerWidth={screenSize} />
 
 <div class="header">
@@ -33,13 +32,12 @@
 		</div>
 	{/if}
 	{#if screenSize < 800}
-		
-			<button class="hamburger" on:click={togglemenu}> {menushow=='none'?'=':'x'} </button>
-            <div class="headernav" style="display:{menushow}">
+		<button class="hamburger" on:click={togglemenu}> {menushow == 'none' ? '=' : 'x'} </button>
+		<div class="headernav" style="display:{menushow}">
 			{#each navlist as navitem}
 				<a href={navitem[0]}>{navitem[1]}</a>
 			{/each}
-        </div>  
+		</div>
 	{/if}
 </div>
 
@@ -63,7 +61,7 @@
 	}
 	.headertitle {
 		font-size: 2rem;
-		color: rgb(20, 121, 107);
+		color: rgb(0, 219, 190);
 		padding: 10px;
 		font-weight: bold;
 		font-style: oblique;
@@ -74,13 +72,13 @@
 		justify-content: space-between;
 		align-items: center;
 	}
-    .hamburger{
-        background-color: transparent;
-        color: #ffffff;
-        font-size: 1.5rem;
-        border: none;
-        padding: 10px;
-    }
+	.hamburger {
+		background-color: transparent;
+		color: #ffffff;
+		font-size: 1.5rem;
+		border: none;
+		padding: 10px;
+	}
 	.headernav a {
 		padding: 10px;
 		color: #ffffff;
@@ -92,11 +90,15 @@
 
 	@media only screen and (max-width: 600px) {
 		.headernav {
-            position: absolute; 
-            top:11vh;
-            right:10px;
-            background-color:rgb(8, 112, 104) ;
-            border-radius: 10px;
+			position: absolute;
+			top: 10vh;
+			flex-direction: column;
+			right: 0px;
+			font-size: 2rem;
+			font-weight: bold;
+			background-color: rgba(8, 112, 103, 0.863);
+			z-index: 5;
+			border-radius: 10px 0px 0px 10px;
 		}
 		.headertitle {
 			font-size: 1.5rem;

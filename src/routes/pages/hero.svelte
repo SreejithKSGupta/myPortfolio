@@ -34,39 +34,53 @@
 <div id="herocontainer">
 	<div id="heropart">
 		<div id="herosection">
-			<h2 id="herotext"
-				style="transform: translate(0, {y < 2 ? y * layer/3 : -y * layer/3}px) ; opacity:{1 - y / 300}"
+			<h2
+				id="herotext"
+				style="transform: translate(0, {y < 2
+					? (y * layer) / 3
+					: (-y * layer) / 3}px) ; opacity:{1 - y / 300}"
 			>
 				Hi, I'm {name}
 			</h2>
 			<span
 				class="spanpar"
-				style="transform: translate({y < 2 ? y * layer/5 : -y * layer/5}px, {y < 2
+				style="transform: translate({y < 2 ? (y * layer) / 5 : (-y * layer) / 5}px, {y < 2
 					? (y * layer) / 1.5
 					: (-y * layer) / 1.5}px) ; opacity:{1 - y / 100}">{CTAtxt}</span
 			>
 		</div>
 		<div id="herosection">
-			<img class="mainimg"
+			<img
+				class="mainimg"
 				src={mainimg}
 				alt="hero"
-				style="transform: translate( {y < 2 ? -1 * y * layer/8 : y * layer/8}px,0) ; opacity:{1 -
-					y / 300}"
+				style="transform: translate( {y < 2
+					? (-1 * y * layer) / 8
+					: (y * layer) / 8}px,0) ; opacity:{1 - y / 300}"
 			/>
-			
 		</div>
 		<div id="skillsline">
-			<div class="skillslist" style="transform: translate( {y < 2 ? -1 * y * layer/10 : y * layer/10}px,0) ; opacity:{1-y / 900}">
+			<div
+				class="skillslist"
+				style="transform: translate( {y < 2
+					? (-1 * y * layer) / 10
+					: (y * layer) / 10}px,0) ; opacity:{1 - y / 900}"
+			>
 				{#each skills1 as skill}
-				<div>{skill}</div>
-				{/each}
-			</div><br>
-			<div class="skillslist" style="transform: translate( {y < 2 ? 1 * y * layer/10 : -1*y * layer/10}px,0) ; opacity:{1-y / 900}">
-				{#each skills2 as skill}
-				<div>{skill}</div>
+					<div>{skill + ','}</div>
 				{/each}
 			</div>
-
+			<br />
+			<div
+				class="skillslist"
+				style="transform: translate( {y < 2
+					? (1 * y * layer) / 10
+					: (-1 * y * layer) / 10}px,0) ; opacity:{1 - y / 900}"
+			>
+				{#each skills2 as skill}
+					<div>{skill}</div>
+				{/each}
+			</div>
 		</div>
 	</div>
 </div>
@@ -89,7 +103,7 @@
 		flex-wrap: wrap;
 		align-items: center;
 	}
-	#herotext{
+	#herotext {
 		animation: glow 2s infinite;
 	}
 	#skillsline {
@@ -104,7 +118,7 @@
 		display: inline-block;
 		justify-content: space-evenly;
 	}
-	.skillslist{
+	.skillslist {
 		height: 30%;
 		margin: 10px;
 		padding: 10px;
@@ -114,18 +128,18 @@
 		border-bottom: dotted 1px #fff;
 		border-top: dotted 1px #fff;
 	}
-	.mainimg{
+	.mainimg {
 		width: 25vw;
-		height:25vw;
+		height: 25vw;
 		border-radius: 50%;
 	}
-	.skillslist :hover{
+	.skillslist :hover {
 		border-bottom: dotted 1px #00ffbf;
 		border-top: dotted 1px #06e6c0;
 		transition: all 0.5s ease;
 	}
 
-	.skillslist div:hover{
+	.skillslist div:hover {
 		transform: scale3d(1.2, 1.2, 1.2);
 		color: #00e1ff;
 		transition: all 0.5s ease;
@@ -157,11 +171,9 @@
 	}
 
 	@media only screen and (max-width: 600px) {
-
-	 
 		#herosection {
 			width: 100%;
-			height:auto;
+			height: auto;
 			font-size: 150%;
 		}
 		#skillsline {
@@ -170,9 +182,9 @@
 			font-size: 60%;
 			flex-wrap: wrap;
 		}
-		.mainimg{
+		.mainimg {
 			width: 30vh;
-			height:30vh;
+			height: 30vh;
 		}
 		.spanpar {
 			font-size: 100%;
@@ -220,11 +232,12 @@
 			transform: translateY(-1px) translateX(2px);
 		}
 	}
-	@keyframes glow{
-		0%,100%{
+	@keyframes glow {
+		0%,
+		100% {
 			text-shadow: #b5c017 1px 3px;
 		}
-		50%{
+		50% {
 			text-shadow: #17bac0 1px 3px;
 		}
 	}

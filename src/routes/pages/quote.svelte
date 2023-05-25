@@ -1,76 +1,70 @@
 <script lang="ts">
-	let quote1=	` If the universe was a Language,`
-    let quote2=' Mathematics is the Alphabet,';
-    let quote3=' Physics is the Grammar,';
-    let quote4=' and Engineers are the authors of Epics.';
-    let quoter=	`-Me`;
-    let quoterinfo='When I become famous';
+	let quote1 = ` If the universe was a Language,`;
+	let quote2 = ' Mathematics is the Alphabet,';
+	let quote3 = ' Physics is the Grammar,';
+	let quote4 = ' and Engineers are the authors of Epics.';
+	let quoter = `-Me`;
+	let quoterinfo = 'When I become famous';
 </script>
 
-
 <div class="QuoteBox">
-    <div class="Quoteitem">
-      <h1>
-       {quote1}<span style="color:#ffffff">{quote2}</span>{quote3} <span style="color:#ffffff"> {quote4}</span>
-       </h1>
-      <h4>&mdash;{quoter}<br><em>{quoterinfo}</em></h4>
-    </div>
-  </div>
-  
+	<div class="Quoteitem">
+		<h1>
+			{quote1}<span style="color:#ffffff">{quote2}</span>{quote3}
+			<span style="color:#ffffff"> {quote4}</span>
+		</h1>
+		<h4>&mdash;{quoter}<br /><em>{quoterinfo}</em></h4>
+	</div>
+</div>
 
 <style>
+	.QuoteBox {
+		display: flex;
+		width: 100%;
+		margin: 30px;
+		justify-content: center;
+	}
 
+	.Quoteitem {
+		font-family: 'Barlow Condensed', sans-serif;
+		width: 50%;
+		align-self: center;
+	}
 
-.QuoteBox {
-   display: flex;
-   width: 100%;
-   margin: 30px;
-    justify-content: center;
-}
+	.Quoteitem h1 {
+		font-family: 'Abril Fatface', cursive;
+		position: relative;
+		color: #449e97;
+		font-size: 2rem;
+		font-weight: bold;
+		line-height: 1.5;
+		margin: 0;
+		border: 2px solid #fff;
+		border: solid 2px;
+		border-radius: 20px;
+		padding: 25px;
+	}
 
-.Quoteitem {
-    font-family: 'Barlow Condensed', sans-serif;
-    width: 50%;
-    align-self: center;
-    
-}
+	.Quoteitem h4 {
+		color: #ffffff;
+		font-size: 1.5rem;
+		font-weight: 400;
+		line-height: 1.2;
+		padding-top: 15px;
+		z-index: 1;
+		text-align: right;
+	}
 
-.Quoteitem h1 {
-    font-family: 'Abril Fatface', cursive;
-    position: relative;
-    color: #449e97;
-    font-size: 2rem;
-    font-weight: bold;
-    line-height: 1.5;
-    margin: 0;
-    border: 2px solid #fff;
-    border: solid 2px;
-    border-radius:20px;
-    padding: 25px;
-}
+	@media (max-width: 768px) {
+		.Quoteitem {
+			width: 80%;
+		}
 
-
-
-.Quoteitem h4 {
-    color: #ffffff;
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: 1.2;
-    padding-top: 15px;
-    z-index: 1;
-text-align: right;
-}
-
-@media (max-width: 768px) {
-   .Quoteitem {
-        width: 80%;
-    }
-
-    .Quoteitem h1 {
-        font-size: 1.5rem;
-    }
-    .Quoteitem h4 {
-        font-size: 1rem;
-    }
-}
+		.Quoteitem h1 {
+			font-size: 1.5rem;
+		}
+		.Quoteitem h4 {
+			font-size: 1rem;
+		}
+	}
 </style>

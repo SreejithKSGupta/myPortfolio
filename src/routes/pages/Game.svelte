@@ -81,6 +81,7 @@
 	$: dicestage = 0;
 	let words = ['Play it', 'Own It', 'Enjoy it'];
 	let current = 0;
+	let screenwidth = 0;
 
 	setInterval(() => {
 		current = current + 1 === words.length ? 0 : current + 1;
@@ -96,26 +97,42 @@
 				if ((liferoad[i][0] as number) > dicestage) {
 					dicestage = liferoad[i][0] as number;
 					age = document.getElementById(`timeage${liferoad[i][0]}`);
-			        setagetocenter(age);
-					
+					setagetocenter(age);
+
 					return;
 				}
 			}
 		} else {
 			setagetocenter(age);
-		
 		}
 	}
-	function setagetocenter(age: HTMLElement | null){
+	function setagetocenter(age: HTMLElement | null) {
 		age!.scrollIntoView({
-				behavior: 'smooth',
-				block: 'center',
-				inline: 'center'
-			});
+			behavior: 'smooth',
+			block: 'center',
+			inline: 'center'
+		});
 	}
 </script>
 
+<svelte:window bind:innerWidth={screenwidth} />
 <div id="game">
+	{#if screenwidth < 600}
+		<div id="gameheading">
+			<h2>Life is a Game</h2>
+			{#each words as word, i}
+				{#if i === current}
+					<div
+						class="fadingwords"
+						in:fly={{ y: -30, duration: 500, delay: 500 }}
+						out:fly={{ y: 30, duration: 500, delay: 500 }}
+					>
+						...{word}
+					</div>
+				{/if}
+			{/each}
+		</div>
+	{/if}
 	<div class="gamebox" style="background-color: aliceblue;">
 		<Timeline
 			position="alternate"
@@ -131,15 +148,15 @@
 						<TimelineConnector />
 					</TimelineSeparator>
 					<TimelineContent>
-						{#if life[0]==dicestage}
-						<p class="timelinecontent" id={life[0] + 'para'} style="background-color: blue;" >
-							{life[1]}
-						</p>
+						{#if life[0] == dicestage}
+							<p class="timelinecontent" id={life[0] + 'para'} style="background-color: blue;">
+								{life[1]}
+							</p>
 						{/if}
-						{#if life[0]!=dicestage}
-						<p class="timelinecontent" id={life[0] + 'para'} >
-							{life[1]}
-						</p>
+						{#if life[0] != dicestage}
+							<p class="timelinecontent" id={life[0] + 'para'}>
+								{life[1]}
+							</p>
 						{/if}
 					</TimelineContent>
 				</TimelineItem>
@@ -147,21 +164,24 @@
 		</Timeline>
 	</div>
 	<div class="controlbox">
-		<h2>Life is a Game</h2>
-		{#each words as word, i}
-			{#if i === current}
-				<div
-					class="fadingwords"
-					in:fly={{ y: -30, duration: 500, delay: 500 }}
-					out:fly={{ y: 30, duration: 500, delay: 500 }}
-				>
-					...{word}
-				</div>
-			{/if}
-		{/each}
+		{#if screenwidth > 600}
+			<div id="gameheading">
+				<h2>Life is a Game</h2>
+				{#each words as word, i}
+					{#if i === current}
+						<div
+							class="fadingwords"
+							in:fly={{ y: -30, duration: 500, delay: 500 }}
+							out:fly={{ y: 30, duration: 500, delay: 500 }}
+						>
+							...{word}
+						</div>
+					{/if}
+				{/each}
+			</div>
+		{/if}
 		<Dice bind:dicestage />
 	</div>
-	
 </div>
 
 <style>
@@ -183,20 +203,21 @@
 		text-align: center;
 		font-size: 150%;
 	}
-	#game{
+	#game {
 		width: 90vw;
 		background-color: #222222;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-evenly;
 		align-items: center;
+		border-radius: 10px;
+		padding: 10px;
 	}
 	.gamebox {
 		width: 40%;
 		border-radius: 10px;
 		height: 80vh;
-		margin: 5vh 0px;
-		padding: 5vh 0px;
+		margin: 5vh 0px 0px 0px;
 		overflow: scroll;
 	}
 	.controlbox {
@@ -204,7 +225,7 @@
 		height: 80vh;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-around;
+		justify-content: space-evenly;
 	}
 
 	.timelinecontent {
@@ -222,10 +243,21 @@
 		}
 		.gamebox {
 			width: 90%;
+			height: 50vh;
 			flex-direction: column;
 		}
 		.controlbox {
 			width: 90%;
+			height: 20vh;
+		}
+		.timelinecontent {
+			font-size: 1rem;
+		}
+		.timelineage {
+			font-size: 1.5rem;
+		}
+		h2 {
+			font-size: 2rem;
 		}
 	}
 </style>

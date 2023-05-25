@@ -1,5 +1,5 @@
 <script>
-// @ts-nocheck
+	// @ts-nocheck
 
 	import { onMount, onDestroy, getContext, setContext, tick } from 'svelte';
 	export let stretchFirst = false,
@@ -92,14 +92,10 @@
 	<slot />
 </div>
 
-
-
-
-
 <style>
 	:global(.__grid--masonry) {
 		display: grid;
-		grid-template-columns: repeat(auto-fit,  minmax(Min(400px, 100%), 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(Min(400px, 100%), 1fr));
 		grid-template-rows: masonry;
 		grid-gap: 1.5em;
 		padding: 1.5em;
