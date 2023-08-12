@@ -1,3 +1,3 @@
-A tasks app made using SvelteKit, with inpiration from one of the tutorials for learning sveltkit.
+My portifolio, made using sveltekit
 
-https://mytasks.pages.dev/
+https://myportfolio-8fi.pages.dev/
