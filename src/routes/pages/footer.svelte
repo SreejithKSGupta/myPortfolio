@@ -1,8 +1,8 @@
 <script lang="ts">
 	import mainfooterlogo from '../res/sreejith.webp';
 	let sociallist = [
-		['https://github.com', 'Github'],
-		['https://linkedin.com', 'Linkedin'],
+		['https://github.com/sreejithksgupta', 'Github'],
+		['https://www.linkedin.com/in/sreejith-k-s-gupta/'],
 		['https://asastech.in', 'Asastech'],
 		['https://hackerrank.com', 'Hackerrank']
 	];
