@@ -23,7 +23,7 @@ Hi, I'm Sreejith KS, a Computer Science student at Government Engineering Colleg
 ## Contact
 
 - **Phone:** +917025692254
-- **Email:** [mail.to](mailto:sreejithksgupta@gmail.com)
+- **Email:** [sreejithksgupta2255@gmail.com](mailto:sreejithksgupta@gmail.com)
 - **GitHub:** [sreejithksgupta](https://github.com/sreejithksgupta)
 - **LinkedIn:** [linkedin.com](https://www.linkedin.com)
 
