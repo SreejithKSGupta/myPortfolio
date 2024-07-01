@@ -11,21 +11,28 @@
 	<meta name="author" content="Sreejith KS">
 	<meta name="robots" content="index, follow">
 	<meta name="googlebot" content="index, follow">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<title>My Portfolio</title>
 	%sveltekit.head%
 	<style>
 		:root {
+		--primary-color: #007db8; 
+		--secondary-color: #946000;	
 		--main-bg-color: #292929;
 		--header-color: #fff;
 		--header-font-size: 2rem;
 		--header-font-family: 'Poppins', sans-serif;
+        --transition-speed: 0.3s;
+		--box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+		--font-color: #fff;
+        --bold-color: #f1d8d8 ; 
 		--contact-item-padding: 20px;
 		--contact-item-margin: 10px;
-		--contact-item-hover-bg: rgba(255, 255, 255, 0.1);
+		--main-bg-color: rgba(255, 255, 255, 0.1);
 		--contact-img-size: 30px;
 		--contact-item-radius: 15px;
-		--transition-speed: 0.3s;
-		--box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		
 	}
 
 
@@ -36,6 +43,7 @@
 			scroll-behavior: smooth;
 			-webkit-user-select: none;
 			user-select: none;
+			color: var(--font-color);
 
 		}
 
@@ -45,9 +53,6 @@
 			background-color: #21073fd8;
 			overscroll-behavior: none;
 			background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
-			display: flex;
-			flex-direction: column;
-			align-items: center;
 		}
 
 		::-webkit-scrollbar {

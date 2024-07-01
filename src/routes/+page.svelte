@@ -8,7 +8,7 @@
 	import Game from './pages/Game.svelte';
 	import Quote from './pages/quote.svelte';
 </script>
-
+<div id="content">
 <Header />
 <Hero />
 <Quote />
@@ -17,3 +17,12 @@
 <Game />
 <ContactMe />
 <Footer />
+</div>
+
+<style >
+	#content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+</style>

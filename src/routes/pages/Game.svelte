@@ -41,7 +41,7 @@
 		],
 		[
 			19,
-			"Made my lifelong friend, my lifelong friend, didn't score enough in KEAM for my dream College"
+			"Made my lifelong friend , didn't score enough in KEAM for my dream College"
 		],
 		[
 			20,
@@ -86,8 +86,6 @@
 	setInterval(() => {
 		current = current + 1 === words.length ? 0 : current + 1;
 	}, 1500);
-
-	// call scrolltoAge() when dicestage changes
 	$: dicestage && scrollToAge();
 
 	function scrollToAge() {
@@ -185,6 +183,17 @@
 </div>
 
 <style>
+		#game {
+		width: 90vw;
+		background-color: #222222;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		align-items: center;
+		border-radius: 10px;
+		padding: 10px;
+		margin: 20px;
+		}
 	h2 {
 		width: 100%;
 		font-size: 4rem;
@@ -203,16 +212,7 @@
 		text-align: center;
 		font-size: 150%;
 	}
-	#game {
-		width: 90vw;
-		background-color: #222222;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-evenly;
-		align-items: center;
-		border-radius: 10px;
-		padding: 10px;
-	}
+
 	.gamebox {
 		width: 40%;
 		border-radius: 10px;

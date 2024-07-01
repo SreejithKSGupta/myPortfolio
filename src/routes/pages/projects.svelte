@@ -1,7 +1,8 @@
 <script lang="ts">
 	// @ts-nocheck
 	import home from '../res/projects/home5559.webp';
-	import assetify from '../res/projects/assettify.webp';
+	import chatsystem from '../res/projects/chat.webp';
+	import facematch from '../res/projects/face_matcher.webp';
 	import fastfinger from '../res/projects/fastfingers.webp';
 	import weather from '../res/projects/weather.webp';
 	import todo from '../res/projects/todoflutter.webp';
@@ -11,21 +12,30 @@
 	import mybooks from '../res/projects/mybooks.webp';
 	let projectlist = [
 		[
-			'Home',
-			'Homepage is a webApp that is meant to replace your default browser homepage, with a more customizable and user friendly version that syncs across devices.',
-			 home,
-			'https://github.com/SreejithKSGupta/Homepage',
-			'https://home5559.web.app',
-			['HTML,CSS,JS,', 'Sign in with google', 'Fully Customisable', 'Sync across devices', 'No Ads']
+			'Offline Document Chat System',
+			'A fully provate and offline LLM  chat system for Thrissur Police Department, as part of our college project.',
+			 chatsystem,
+			'https://github.com/SreejithKSGupta',
+			'https://assetifii.web.app/',
+			['Changable Models', 'Fully Private','Based on Private GPT', ]
 		],
 		[
-			'Assettify',
-			'group project with a modern take on helping the young generations build good financial management skills, through gamification',
-			 assetify,
-			'https://github.com/SreejithKSGupta/AssetiFii',
+			'Face Matcher',
+			'Just a Simple webapp for matching Faces to a set of uploaded images.',
+			 facematch,
+			'https://github.com/SreejithKSGupta/photomatcher',
 			'https://assetifii.web.app/',
-			['HTML,CSS,JS,', 'Sign in with google']
+			['Changable Models', 'Fully Private','Based on Private GPT', ]
 		],
+		[
+			'Home',
+			'WebApp meant to replace your default browser homepage, with a more customizable and user friendly version that syncs across devices.',
+			 home,
+			'https://github.com/SreejithKSGupta/homepage5',
+			'https://home5559.vercel.app',
+			['Sveltekit,', 'Firebase', 'Fully Customisable', 'Sync across devices', ]
+		],
+	
 		[
 			'Fast Fingers',
 			'Typing game to improve typing speed in a fun way, that rewards you for your efforts.',
@@ -123,7 +133,7 @@
 	}
 	.projectitem {
 		width: clamp(400px, 40vw, 500px);
-		height: 40vh;
+		height: 35vh;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -132,12 +142,10 @@
 		border-radius: 10px;
 		color: #ffffff;
 		transition: all 0.5s ease;
-		margin: 20px;
+		margin: 10px;
 	}
 	.projectitem:hover {
-		transform: scale(1.3);
-		box-shadow: 100vw 200vw 100vw 100vw rgba(0, 0, 0, 0.75);
-		-webkit-box-shadow: 0 0 100vw 100vw rgba(0, 0, 0, 0.75);
+		transform: scale(1.05);
 	}
 	.projectimg {
 		width: 30%;
@@ -167,6 +175,10 @@
 		height: 30%;
 		padding-left: 10px;
 	}
+	.projectdetails li {
+		color: lightgray;
+		list-style-type: none;
+	}
 	.btnrow {
 		display: flex;
 		justify-content: space-evenly;
@@ -183,7 +195,7 @@
 		font-weight: bolder;
 	}
 	.projectbtn:hover {
-		transform: scale(1.1);
+		transform: scale(1.05);
 	}
 	a {
 		text-decoration: none;
@@ -211,7 +223,6 @@
 		.projectdetails ul,
 		.projectdetails p {
 			height: auto;
-			padding: 10px;
 		}
 		.btnrow {
 			width: 100%;
