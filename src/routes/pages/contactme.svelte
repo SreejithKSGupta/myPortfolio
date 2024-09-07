@@ -3,7 +3,7 @@
 		['tel:+917025692254', 'Phone', 'https://phone.com', '#000044', '#000108'],
 		['https://wa.me/7025692254', 'Whatsapp', 'https://whatsapp.com', 'green', '#228415'],
 		['https://t.me/7025692254', 'Telegram', 'https://telegram.com', 'blue', '#0036A5'],
-		['https://mail.to/sreejithksgupta2255@gmail.com', 'Email', 'https://mail.google.com', '#690101', '#8B0800']
+		['mailto:sreejithksgupta2255@gmail.com', 'Email', 'https://mail.google.com', '#690101', '#8B0800']
 	];
 
 	function getFavicon(websiteUrl: string): string {
@@ -12,10 +12,10 @@
 </script>
 
 <div id="contactme">
-	<div class='header'>Contact Me</div>
+	<div class="header">Contact Me</div>
 	{#each contactlist as contactitem}
-		<a href={contactitem[0]} class="contactitem" style={`background: linear-gradient(135deg, ${contactitem[3]}, ${contactitem[4]});`}>
-			<img class="contactimg" src={getFavicon(contactitem[2])} alt={contactitem[1]} />
+		<a href={contactitem[0]} class="contactitem" style={`background: linear-gradient(135deg, ${contactitem[3]}, ${contactitem[4]});`} aria-label={contactitem[1]}>
+			<img class="contactimg" src={getFavicon(contactitem[2])} alt={`${contactitem[1]} Icon`} />
 			{contactitem[1]}
 		</a>
 	{/each}
@@ -34,6 +34,7 @@
 		--contact-item-radius: 15px;
 		--transition-speed: 0.3s;
 		--box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		--btn-hover-scale: 1.1;
 	}
 
 	#contactme {
@@ -70,10 +71,14 @@
 		margin: var(--contact-item-margin);
 		transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
 		box-shadow: var(--box-shadow);
+		color: #fff;
+		font-family: 'Poppins', sans-serif;
+		font-weight: 600;
+		text-decoration: none;
 	}
 
 	.contactitem:hover {
-		transform: scale(1.1);
+		transform: scale(var(--btn-hover-scale));
 		background-color: var(--contact-item-hover-bg);
 		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.541);
 	}
@@ -86,21 +91,16 @@
 		transition: transform var(--transition-speed) ease;
 	}
 
-	a {
-		text-decoration: none;
-		color: #fff;
-		font-family: 'Poppins', sans-serif;
-		font-weight: 600;
-	}
-
 	.contactitem:hover .contactimg {
 		transform: rotate(360deg);
 	}
 
+	/* Responsive Styles */
 	@media only screen and (max-width: 600px) {
 		#contactme {
-			width: 90vw;
+			width: 98vw;
 			flex-direction: column;
+			padding: 10px;
 		}
 		.contactitem {
 			width: 90%;

@@ -98,25 +98,23 @@
 
 <div id="projects">
 	{#each projectlist as project}
-		<div class="projectitem">
-			<img class="projectimg" src={project[2]} alt={project[0]} />
-			<div class="projectdetails">
-				<div class="h4">{project[0]}</div>
+		<div class="project-item">
+			<img class="project-img" src={project[2]} alt={project[0]} />
+			<div class="project-details">
+				<h4>{project[0]}</h4>
 				<p>{project[1]}</p>
 				<ul>
-					{#each project[5] as features}
-						<li>{features}</li>
+					{#each project[5] as feature}
+						<li>{feature}</li>
 					{/each}
 				</ul>
-				<div class="btnrow">
-					{#if project[4] != ''}
-						<a href={project[3]}
-							><div class="projectbtn" style="background-color: green;">Github</div></a
-						>{/if}
+				<div class="btn-row">
 					{#if project[3] != ''}
-						<a href={project[4]}
-							><div class="projectbtn" style="background-color: blue;">Live</div></a
-						>{/if}
+						<a href={project[3]} class="project-btn github-btn">GitHub</a>
+					{/if}
+					{#if project[4] != ''}
+						<a href={project[4]} class="project-btn live-btn">Live</a>
+					{/if}
 				</div>
 			</div>
 		</div>
@@ -124,113 +122,126 @@
 </div>
 
 <style>
-	#projects {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		width: 100%;
-		justify-content: space-evenly;
-	}
-	.projectitem {
-		width: clamp(400px, 40vw, 500px);
-		height: 35vh;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: space-evenly;
-		background-color: #1a1a1a;
-		border-radius: 10px;
-		color: #ffffff;
-		transition: all 0.5s ease;
-		margin: 10px;
-	}
-	.projectitem:hover {
-		transform: scale(1.05);
-	}
-	.projectimg {
-		width: 30%;
-		border-radius: 10px;
-		height: auto;
-	}
-	.projectdetails {
-		display: flex;
-		flex-direction: column;
-		align-items: left;
-		justify-content: space-evenly;
-		width: 50%;
-		height: 80%;
-	}
-	.projectdetails .h4 {
-		font-size: 1.5rem;
-		text-align: center;
-		color: lightseagreen;
-		height: 20%;
-	}
-	.projectdetails p {
-		font-size: 1rem;
-		height: 40%;
-	}
-	.projectdetails ul {
-		font-size: 1rem;
-		height: 30%;
-		padding-left: 10px;
-	}
-	.projectdetails li {
-		color: lightgray;
-		list-style-type: none;
-	}
-	.btnrow {
-		display: flex;
-		justify-content: space-evenly;
-		width: 100%;
-		height: 10%;
-	}
-	.projectbtn {
-		width: 120%;
-		text-align: center;
-		border-radius: 10px;
-		color: #ffffff;
-		transition: all 0.5s ease;
-		padding: 8px 15px;
-		font-weight: bolder;
-	}
-	.projectbtn:hover {
-		transform: scale(1.05);
-	}
-	a {
-		text-decoration: none;
+	:root {
+		--primary-color: #449e97;
+		--secondary-color: #1a1a1a;
+		--text-color: #ffffff;
+		--highlight-color: lightseagreen;
+		--btn-hover-scale: 1.05;
+		--shadow-color: rgba(0, 0, 0, 0.2);
 	}
 
-	@media only screen and (max-width: 600px) {
-		.projectitem {
-			height: auto;
-			flex-direction: column;
-			padding: 10px;
+	#projects {
+		width:80vw;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 10px;
+		padding: 0px;
+	}
+
+	.project-item {
+		background-color: var(--secondary-color);
+		border-radius: 10px;
+		padding: 20px;
+		margin: 10px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		box-shadow: 0 4px 8px var(--shadow-color);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.project-item:hover {
+		transform: scale(1.03);
+		box-shadow: 0 6px 12px var(--shadow-color);
+	}
+
+	.project-img {
+		width: 100%;
+		border-radius: 10px;
+		height:200px;
+		object-fit: cover;
+		margin-bottom: 15px;
+	}
+
+	.project-details {
+		text-align: center;
+		color: var(--text-color);
+	}
+
+	h4 {
+		color: var(--highlight-color);
+		font-size: 1.5rem;
+		margin-bottom: 10px;
+	}
+
+	p {
+		font-size: 1rem;
+		margin-bottom: 10px;
+	}
+
+	ul {
+		padding-left: 0;
+		list-style: none;
+		margin-bottom: 15px;
+	}
+
+	li {
+		font-size: 0.9rem;
+		color: lightgray;
+	}
+
+	.btn-row {
+		display: flex;
+		justify-content: center;
+		gap: 15px;
+	}
+
+	.project-btn {
+		text-decoration: none;
+		font-weight: bold;
+		padding: 8px 20px;
+		border-radius: 5px;
+		color: var(--text-color);
+		transition: transform 0.3s ease;
+	}
+
+	.github-btn {
+		background-color: green;
+	}
+
+	.live-btn {
+		background-color: blue;
+	}
+
+	.project-btn:hover {
+		transform: scale(var(--btn-hover-scale));
+	}
+
+	/* Responsive Styles */
+	@media (max-width: 768px) {
+		h4 {
+			font-size: 1.3rem;
 		}
-		.projectitem:hover {
-			transform: scale(1.1);
-			box-shadow: none;
-			-webkit-box-shadow: none;
+
+		p {
+			font-size: 0.9rem;
 		}
-		.projectimg {
-			width: 50%;
-			height: auto;
+
+		.project-img {
+			margin-bottom: 10px;
 		}
-		.projectdetails {
-			width: 100%;
-			height: auto;
+
+		.project-btn {
+			font-size: 0.9rem;
 		}
-		.projectdetails ul,
-		.projectdetails p {
-			height: auto;
+		#projects {
+			width:98vw;
 		}
-		.btnrow {
-			width: 100%;
-			height: auto;
-		}
-		.projectbtn {
-			width: 25vw;
-			height: auto;
-		}
+		.project-item {
+		padding: 10px;
+		align-items: center;
+	}
+
 	}
 </style>
