@@ -1,19 +1,19 @@
 <script lang="ts">
-	let quote1 = `If the universe was a Language,`;
-	let quote2 = ' Mathematics is the Alphabet,';
-	let quote3 = ' Physics is the Grammar,';
-	let quote4 = ' and Engineers are the authors of Epics.';
-	let quoter = `-Me`;
-	let quoterinfo = 'When I become famous';
+	const quote1 = `If the universe was a Language,`;
+	const quote2 = ' Mathematics is the Alphabet,';
+	const quote3 = ' Physics is the Grammar,';
+	const quote4 = ' and Engineers are the authors of Epics.';
+	const quoter = `-Me`;
+	const quoterInfo = 'When I become famous';
 </script>
 
-<div class="QuoteBox">
-	<div class="Quoteitem">
-		<div class="h2">
+<div class="quote-box">
+	<div class="quote-item">
+		<blockquote class="quote-text">
 			{quote1}<span class="highlight">{quote2}</span>{quote3}
 			<span class="highlight"> {quote4}</span>
-		</div>
-		<div class="h3">&mdash;{quoter}<br /><em>{quoterinfo}</em></div>
+		</blockquote>
+		<cite class="quote-author">&mdash;{quoter}<br /><em>{quoterInfo}</em></cite>
 	</div>
 </div>
 
@@ -25,56 +25,62 @@
 		--quote-author-color: #ffffff;
 	}
 
-	.QuoteBox {
+	/* Global styles */
+	.quote-box {
 		display: flex;
-		margin: 30px;
 		justify-content: center;
+		margin: 30px;
 		padding: 20px;
 		border-radius: 15px;
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	}
 
-	.Quoteitem {
-		font-family: 'Barlow Condensed', sans-serif;
+	.quote-item {
+		font-family: 'Barlow Condensed', sans-serif, Arial, sans-serif;
 		width: 60%;
-		align-self: center;
+		text-align: center;
 	}
 
-	.Quoteitem .h2 {
-		font-family: 'Abril Fatface', cursive;
+	.quote-text {
+		font-family: 'Abril Fatface', cursive, serif;
 		color: var(--quote-text-color);
 		font-size: 2rem;
 		font-weight: bold;
 		line-height: 1.5;
 		margin: 0;
+		padding: 25px;
 		border: 2px solid var(--quote-border-color);
 		border-radius: 20px;
-		padding: 25px;
 	}
 
-	.Quoteitem .h2 .highlight {
+	.highlight {
 		color: var(--quote-highlight-color);
 	}
 
-	.Quoteitem .h3 {
+	.quote-author {
 		color: var(--quote-author-color);
 		font-size: 1.5rem;
 		font-weight: 400;
-		line-height: 1.2;
 		padding-top: 15px;
-		text-align: right;
+		display: block;
 	}
 
+	/* Responsive adjustments */
 	@media (max-width: 768px) {
-		.Quoteitem {
-			width: 80%;
+		.quote-box {
+			margin: 5px;
+            padding: 10px;
+		}
+		.quote-item {
+			width: 90%;
 		}
 
-		.Quoteitem .h2 {
-			font-size: 1.5rem;
+		.quote-text {
+			font-size: 1.2rem;
 		}
-		.Quoteitem .h3 {
-			font-size: 1rem;
+
+		.quote-author {
+			font-size: 0.8rem;
 		}
 	}
 </style>
