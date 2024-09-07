@@ -1,75 +1,69 @@
 <script lang="ts">
 	import logo from '../res/sreejith.webp';
+
 	let screenSize = 0;
-	let navlist = [
-		['#herocontainer', 'Home'],
-		['#projects', 'Projects'],
-		['#aboutme', 'About'],
-		['#contactme', 'Contact'],
-		['#game', 'Game']
+	let menushow = false;
+	const navlist = [
+		{ href: '#herocontainer', label: 'Home' },
+		{ href: '#projects', label: 'Projects' },
+		{ href: '#aboutme', label: 'About' },
+		{ href: '#contactme', label: 'Contact' },
+		{ href: '#game', label: 'Game' }
 	];
-	let appname = 'My Portfolio';
-	let menushow = 'none';
+	const appname = 'My Portfolio';
+
 	function togglemenu() {
-		if (menushow == 'none') {
-			menushow = 'flex';
-		} else {
-			menushow = 'none';
-		}
+		menushow = !menushow;
 	}
 </script>
 
 <svelte:window bind:innerWidth={screenSize} />
 
-<div class="header">
-	<img class="mainlogo" src={logo} alt="logo" />
-	<h1 class="headertitle">{appname}</h1>
-	{#if screenSize > 800}
-		<div class="headernav">
-			{#each navlist as navitem}
-				<a href={navitem[0]}>{navitem[1]}</a>
-			{/each}
-		</div>
-	{/if}
+<header class="header">
+	<img id="mainlogo" src={logo} alt="logo" />
+	<h1 id="headertitle">{appname}</h1>
+	<nav class="headernav {screenSize < 800 ? 'mobile' : ''}" style="display:{screenSize < 800 && !menushow ? 'none' : 'flex'}">
+		{#each navlist as { href, label }}
+			<a href={href} on:click={() => { if (screenSize < 800) togglemenu(); }}>{label}</a>
+		{/each}
+	</nav>
 	{#if screenSize < 800}
-		<button class="hamburger" on:click={togglemenu}> {menushow == 'none' ? '=' : 'x'} </button>
-		<div class="headernav" style="display:{menushow}">
-			{#each navlist as navitem}
-				<a href={navitem[0]}>{navitem[1]}</a>
-			{/each}
-		</div>
+		<button class="hamburger" on:click={togglemenu}>
+			{menushow ? '×' : '≡'}
+		</button>
 	{/if}
-</div>
+</header>
 
 <style>
 	.header {
 		width: 100vw;
 		height: 10vh;
 		display: flex;
-		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
 		background-color: #25072ce3;
 		color: #fff;
 		padding: 10px;
+		position: relative;
 	}
-	.mainlogo {
+	#mainlogo {
 		width: 8vh;
 		height: 8vh;
 		border-radius: 50%;
 		object-fit: cover;
 	}
-	.headertitle {
+	#headertitle {
 		font-size: 2rem;
 		color: rgb(0, 219, 190);
-		padding: 10px;
 		font-weight: bold;
 		font-style: oblique;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 	.headernav {
 		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
+		gap: 10px;
 		align-items: center;
 	}
 	.hamburger {
@@ -78,30 +72,35 @@
 		font-size: 1.5rem;
 		border: none;
 		padding: 10px;
+		cursor: pointer;
 	}
 	.headernav a {
-		padding: 10px;
 		color: #ffffff;
 		text-decoration: none;
+		font-size: 1rem;
 	}
 	.headernav a:hover {
 		color: #075153;
 	}
 
-	@media only screen and (max-width: 600px) {
-		.headernav {
+	@media (max-width: 600px) {
+		.headernav.mobile {
 			position: absolute;
 			top: 10vh;
+			right: 0;
 			flex-direction: column;
-			right: 0px;
-			font-size: 2rem;
-			font-weight: bold;
 			background-color: rgba(8, 112, 103, 0.863);
+			border-radius: 10px 0 0 10px;
 			z-index: 5;
-			border-radius: 10px 0px 0px 10px;
+			width: 50vw;
 		}
-		.headertitle {
+		#headertitle {
 			font-size: 1.5rem;
+		}
+		.headernav.mobile a {
+			font-size: 1.5rem;
+			font-weight: bold;
+			padding: 15px;
 		}
 	}
 </style>
