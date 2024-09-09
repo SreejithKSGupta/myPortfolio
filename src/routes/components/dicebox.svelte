@@ -10,100 +10,158 @@
 	let diceface = D0;
 	let dicecount = 0;
 
-	export let dicestage = 0;
+	export let year = 0;
+	const maxYear = 60;
 
-	function startagain() {
+	function restartGame() {
 		diceface = D0;
 		dicecount = 0;
-		dicestage = 0;
+		year = 0;
 	}
 
-	function spindice() {
+	function rollDice() {
 		diceface = D0;
-		if (dicestage > 60) {
-			dicestage = 60;
-			alert('You have reached the end of the Game');
+
+		if (year >= maxYear) {
+			alert('You’ve reached the end of your journey!');
 			return;
 		}
+
 		setTimeout(() => {
 			dicecount = Math.floor(Math.random() * 6) + 1;
-			diceface = 0
-				? D0
-				: dicecount == 1
-				? D1
-				: dicecount == 2
-				? D2
-				: dicecount == 3
-				? D3
-				: dicecount == 4
-				? D4
-				: dicecount == 5
-				? D5
-				: D6;
-			dicestage = dicecount + dicestage;
+			diceface = [D1, D2, D3, D4, D5, D6][dicecount - 1];
+			year = Math.min(year + dicecount, maxYear);
 		}, 1000);
 	}
 </script>
 
-<div id="dicebox">
-	<div id="dice"><img class="diceimg" src={diceface} alt="dice" /></div>
-	<div id="controller">
-		<button class="diceroller" on:click={startagain}>Start Again</button>
-		<button class="diceroller" on:click={spindice}>Roll Dice</button><button class="diceroller"
-			>Stage : {dicestage}</button
-		>
+<div id="game-container">
+	<div id="status-bar">
+		<h2>Year of Life: {year}</h2>
+		<div id="progress-bar">
+			<div id="progress" style="width: {(year / maxYear) * 100}%"></div>
+		</div>
+	</div>
+
+	<div id="dice-container">
+		<img class="dice-img" src={diceface} alt="dice" />
+	</div>
+
+	<div id="controls">
+		<button class="control-button" on:click={rollDice}>Roll the Dice</button>
+		<button class="control-button" on:click={restartGame}>Restart Journey</button>
 	</div>
 </div>
 
 <style>
-	#dicebox {
-		width: 100%;
-		height: 60vh;
-		border-radius: 10px;
+	/* Container for the entire game interface */
+	#game-container {
 		display: flex;
 		flex-direction: column;
-		justify-content: space-evenly;
-		align-items: center;
-	}
-	#controller {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-evenly;
+		justify-content: space-between;
 		align-items: center;
 		width: 100%;
+		height: 80vh;
+		background-color: #222;
+		color: #fff;
+		border-radius: 15px;
+		padding: 20px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 	}
 
-	.diceimg {
+	/* Status bar to display current year and progress */
+	#status-bar {
+		width: 100%;
+		text-align: center;
+	}
+
+	#status-bar h2 {
+		font-size: 2rem;
+		margin-bottom: 10px;
+		color: #f2f2f2;
+	}
+
+	#progress-bar {
+		width: 80%;
+		height: 15px;
+		background-color: #444;
+		border-radius: 10px;
+		overflow: hidden;
+		margin: 10px auto;
+	}
+
+	#progress {
+		height: 100%;
+		background-color: #28a745;
+		border-radius: 10px;
+		transition: width 0.4s ease;
+	}
+
+	/* Dice image styling */
+	#dice-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		width: 150px;
 		height: 150px;
 	}
 
-	.diceroller {
-		padding: 10px;
-		height: 50px;
-		border-radius: 10px;
-		background-color: rgb(14, 107, 34);
-		color: white;
-		font-size: 1.5rem;
-		font-weight: 500;
+	.dice-img {
+		width: 100%;
+		height: auto;
+		transition: transform 0.5s ease;
+	}
+
+	/* Styling for control buttons */
+	#controls {
+		width: 100%;
+		display: flex;
+		justify-content: space-evenly;
+		margin-top: 20px;
+	}
+
+	.control-button {
+		padding: 15px 25px;
+		font-size: 1.25rem;
+		background-color: #28a745;
+		color: #fff;
 		border: none;
+		border-radius: 8px;
+		cursor: pointer;
+		transition: background-color 0.3s ease, transform 0.3s ease;
 	}
-	.diceroller:hover {
-		transform: scale(1.1);
+
+	.control-button:hover {
+		background-color: #218838;
+		transform: scale(1.05);
 	}
+
+	.control-button:active {
+		transform: scale(0.95);
+	}
+
 	@media (max-width: 768px) {
-		.diceimg {
+		#game-container {
+			height: 40vh;
+			padding: 10px;
+			margin: 10px auto;
+		}
+
+		#status-bar h2 {
+			font-size: 1.5rem;
+		}
+
+		.dice-img {
+			width: 80px;
+		}
+		#dice-container{
 			width: 100px;
 			height: 100px;
 		}
-		#controller {
-			flex-direction: row;
-		}
-		.diceroller {
-			font-size: 1rem;
-		}
-		#dicebox {
-			height: 30vh;
+
+		.control-button {
+			font-size: 0.9rem;
+			padding: 5px 10px;
 		}
 	}
 </style>

@@ -10,6 +10,7 @@
 	} from 'svelte-vertical-timeline';
 	import { fly } from 'svelte/transition';
 	import Dice from '../components/dicebox.svelte';
+	
 	let liferoad = [
 		[0, 'Just been born as Son to Ambika and Suresh K , @Palakkad'],
 		[1, 'Probably started walking, which was my greatest achivement at the time'],
@@ -61,7 +62,7 @@
 		],
 		[
 			24,
-			'Probably finished my College, and landed on a good Job that values my effort, with my friends'
+			'Finished my College, soome of the best group of memories and friends'
 		],
 		[27, 'might be the year I get someting important, but missing to my life'],
 		[
@@ -78,7 +79,8 @@
 			"how long do you think let I'll Live ,eating meals 3 times a day for all my life? 120 years?"
 		]
 	];
-	$: dicestage = 0;
+
+	$: dicecount = 0;
 	let words = ['Play it', 'Own It', 'Enjoy it'];
 	let current = 0;
 	let screenwidth = 0;
@@ -86,14 +88,14 @@
 	setInterval(() => {
 		current = current + 1 === words.length ? 0 : current + 1;
 	}, 1500);
-	$: dicestage && scrollToAge();
+	$: dicecount && scrollToAge();
 
 	function scrollToAge() {
-		let age = document.getElementById(`timeage${dicestage}`);
+		let age = document.getElementById(`timeage${dicecount}`);
 		if (!age) {
 			for (let i = 0; i < liferoad.length; i++) {
-				if ((liferoad[i][0] as number) > dicestage) {
-					dicestage = liferoad[i][0] as number;
+				if ((liferoad[i][0] as number) > dicecount) {
+					dicecount = liferoad[i][0] as number;
 					age = document.getElementById(`timeage${liferoad[i][0]}`);
 					setagetocenter(age);
 
@@ -146,16 +148,9 @@
 						<TimelineConnector />
 					</TimelineSeparator>
 					<TimelineContent>
-						{#if life[0] == dicestage}
-							<p class="timelinecontent" id={life[0] + 'para'} style="background-color: blue;">
-								{life[1]}
-							</p>
-						{/if}
-						{#if life[0] != dicestage}
-							<p class="timelinecontent" id={life[0] + 'para'}>
-								{life[1]}
-							</p>
-						{/if}
+						<p class="timelinecontent" id={life[0] + 'para'} style={`background-color: ${life[0] === dicecount ? 'blue' : '#222222'}`}>
+							{life[1]}
+						</p>
 					</TimelineContent>
 				</TimelineItem>
 			{/each}
@@ -178,12 +173,12 @@
 				{/each}
 			</div>
 		{/if}
-		<Dice bind:dicestage />
+		<Dice bind:year={dicecount} />
 	</div>
 </div>
 
 <style>
-		#game {
+	#game {
 		width: 90vw;
 		background-color: #222222;
 		display: flex;
@@ -192,8 +187,7 @@
 		align-items: center;
 		border-radius: 10px;
 		padding: 10px;
-		margin: 20px;
-		}
+	}
 	h2 {
 		width: 100%;
 		font-size: 4rem;
@@ -202,7 +196,6 @@
 		margin: 20px;
 		padding: 0;
 		color: cornsilk;
-		text-align: center;
 	}
 	.fadingwords {
 		color: rgb(0, 255, 221);
@@ -212,13 +205,12 @@
 		text-align: center;
 		font-size: 150%;
 	}
-
 	.gamebox {
 		width: 40%;
 		border-radius: 10px;
 		height: 80vh;
 		margin: 5vh 0px 0px 0px;
-		overflow: scroll;
+		overflow-y: scroll;
 	}
 	.controlbox {
 		width: 40%;
@@ -227,23 +219,22 @@
 		flex-direction: column;
 		justify-content: space-evenly;
 	}
-
 	.timelinecontent {
 		font-size: 1.5rem;
 		font-weight: 500;
 		padding: 10px;
-		background-color: #222222;
 		color: white;
 		border-radius: 10px;
-		z-index: 0;
 	}
 	@media (max-width: 768px) {
 		#game {
 			flex-direction: column;
+			justify-content: flex-start;
+			height: 90vh;
 		}
 		.gamebox {
 			width: 90%;
-			height: 50vh;
+			height: 40vh;
 			flex-direction: column;
 		}
 		.controlbox {
@@ -257,7 +248,7 @@
 			font-size: 1.5rem;
 		}
 		h2 {
-			font-size: 2rem;
+			font-size: 1.5rem;
 		}
 	}
 </style>
