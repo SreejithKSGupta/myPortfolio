@@ -39,6 +39,7 @@
   },
   "type": "module",
   "dependencies": {
+    "caniuse-lite": "",
     "gh-pages": "^5.0.0",
     "sass": "^1.62.1",
     "svelte-masonry-layout": "^0.0.7",
