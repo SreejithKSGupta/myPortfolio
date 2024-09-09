@@ -1,5 +1,6 @@
 <script lang="ts">
 	// @ts-nocheck
+	import Modal from './Modal.svelte';
 	import home from '../res/projects/home5559.webp';
 	import chatsystem from '../res/projects/chat.webp';
 	import facematch from '../res/projects/face_matcher.webp';
@@ -94,32 +95,50 @@
 		],
 		
 	];
+
+  let selectedProject = null; 
+  let modalVisible = false; 
+
+  function openModal(project) {
+    selectedProject = project;
+    modalVisible = true;
+  }
+
+  function closeModal() {
+    modalVisible = false;
+    selectedProject = null;
+  }
 </script>
 
 <div id="projects">
-	{#each projectlist as project}
-		<div class="project-item">
-			<img class="project-img" src={project[2]} alt={project[0]} />
-			<div class="project-details">
-				<h4>{project[0]}</h4>
-				<p>{project[1]}</p>
-				<ul>
-					{#each project[5] as feature}
-						<li>{feature}</li>
-					{/each}
-				</ul>
-				<div class="btn-row">
-					{#if project[3] != ''}
-						<a href={project[3]} class="project-btn github-btn">GitHub</a>
-					{/if}
-					{#if project[4] != ''}
-						<a href={project[4]} class="project-btn live-btn">Live</a>
-					{/if}
-				</div>
-			</div>
-		</div>
-	{/each}
+  {#each projectlist as project}
+    <div class="project-item" role="button" tabindex="0" on:click={() => openModal(project)} on:keydown={(e) => e.key === 'Enter' ? openModal(project) : null}>
+      <img class="project-img" src={project[2]} alt={project[0]} />
+      <div class="project-details">
+        <h4>{project[0]}</h4>
+        <p>{project[1]}</p>
+        <ul>
+          {#each project[5] as feature}
+            <li>{feature}</li>
+          {/each}
+        </ul>
+        <div class="btn-row">
+          {#if project[3] != ''}
+            <a href={project[3]} class="project-btn github-btn" target="_blank">GitHub</a>
+          {/if}
+          {#if project[4] != ''}
+            <a href={project[4]} class="project-btn live-btn" target="_blank">Live</a>
+          {/if}
+        </div>
+      </div>
+    </div>
+  {/each}
 </div>
+
+{#if modalVisible}
+  <Modal project={selectedProject} visible={modalVisible} on:closeModal={closeModal} />
+{/if}
+
 
 <style>
 	:root {
