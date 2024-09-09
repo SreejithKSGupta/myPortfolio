@@ -67,7 +67,7 @@
 					: (y * layer) / 10}px,0) ; opacity:{1 - y / 900}"
 			>
 				{#each skills1 as skill}
-					<div>{skill + ','}</div>
+					<div class="skillsitem">{skill + ','}</div>
 				{/each}
 			</div>
 			<br />
@@ -78,7 +78,7 @@
 					: (-1 * y * layer) / 10}px,0) ; opacity:{1 - y / 900}"
 			>
 				{#each skills2 as skill}
-					<div>{skill}</div>
+					<div class="skillsitem">{skill}</div>
 				{/each}
 			</div>
 		</div>
@@ -86,6 +86,7 @@
 </div>
 
 <style>
+	/* General Styles */
 	#herocontainer {
 		width: 100vw;
 		height: 90vh;
@@ -132,19 +133,22 @@
 		width: 25vw;
 		height: auto;
 		border-radius: 50%;
+		margin-top: 20px; /* Prevent text overlap */
 	}
 	.skillslist :hover {
 		border-bottom: dotted 1px #00ffbf;
 		border-top: dotted 1px #06e6c0;
 		transition: all 0.5s ease;
 	}
-
 	.skillslist div:hover {
 		transform: scale3d(1.2, 1.2, 1.2);
 		color: #00e1ff;
 		transition: all 0.5s ease;
 	}
-
+	.skillsitem {
+       margin: 1px 3px;
+	   font-size: 70%;
+	}
 	#herosection {
 		width: 45%;
 		height: 70%;
@@ -161,84 +165,26 @@
 		color: #a8a8a8;
 		width: 40vw;
 	}
-	.spanpar::before {
-		content: 'A Computer Science Student From GEC Thrissur passionate about Tech , UI and Coding';
-		position: absolute;
-		top: 0;
-		left: 0;
-		left: 0.5px;
-		animation: glitch-top 2s infinite;
-	}
-
 	@media only screen and (max-width: 600px) {
 		#herosection {
 			width: 100%;
 			height: auto;
-			font-size: 150%;
+			font-size: 120%;
 		}
 		#skillsline {
 			width: 100%;
 			height: auto;
-			font-size: 60%;
+			font-size: 80%;
 			flex-wrap: wrap;
 		}
 		.mainimg {
-			width: 30vh;
-			height: 30vh;
+			width: 25vh; 
+			height: 25vh;
 		}
 		.spanpar {
-			font-size: 100%;
-			width: 90vw;
-		}
-	}
-
-	@keyframes glitch {
-		0% {
-			transform: none;
-		}
-		20% {
-			transform: skewX(-10deg) scale(1.1);
-		}
-		40% {
-			transform: none;
-		}
-		60% {
-			transform: skewX(5deg) scale(0.9);
-		}
-		80% {
-			transform: none;
-		}
-		100% {
-			transform: none;
-		}
-	}
-	@keyframes glitch-top {
-		0%,
-		100% {
-			transform: none;
-			text-shadow: #008cffec -3px 0px, #ff0000da 3px 0px;
-		}
-		20% {
-			transform: translateY(-1px);
-		}
-		40% {
-			transform: translateY(-1px) translateX(-2px);
-		}
-		60% {
-			transform: translateY(-1px);
-			text-shadow: rgba(255, 0, 212, 0.808) 3px 0px, #51ff00d5 3px 0px;
-		}
-		80% {
-			transform: translateY(-1px) translateX(2px);
-		}
-	}
-	@keyframes glow {
-		0%,
-		100% {
-			text-shadow: #b5c017 1px 3px;
-		}
-		50% {
-			text-shadow: #17bac0 1px 3px;
+			font-size: 90%; 
+			width: 85vw; 
 		}
 	}
 </style>
+
