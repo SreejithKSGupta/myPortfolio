@@ -3,7 +3,7 @@
 	const layer = 5;
 	let y = 0;
 	let name = 'Sreejith KS';
-	let CTAtxt = 'A Computer Science Student From GEC Thrissur passionate about Tech , UI and Coding';
+	let CTAtxt = 'Passionate about front-end web development, Flutter, and all things tech. Dedicated to creating innovative user interfaces and coding solutions';
 	let skills1 = [
 		'Svelte',
 		'Wordpress',
@@ -106,6 +106,7 @@
 	}
 	#herotext {
 		animation: glow 2s infinite;
+		padding: 70px 5px;
 	}
 	#skillsline {
 		width: 80%;
@@ -182,7 +183,7 @@
 			height: 25vh;
 		}
 		.spanpar {
-			font-size: 90%; 
+			font-size: 100%; 
 			width: 85vw; 
 		}
 	}
