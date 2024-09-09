@@ -20,7 +20,7 @@
 			'A simple and elegant Periodic table with extra features to help you visualize and understand in new ways',
 			    elements,
             'https://github.com/SreejithKSGupta/elements',
-            'https://elements-bmeh-a6ahky5d8-sreejithksguptas-projects.vercel.app/',
+            'https://elements-mu.vercel.app/',
             ['View 3D Bhors Model of Atoms', 'Color Coded','ability to see various series', 'sorting options']
 		],
 		[
